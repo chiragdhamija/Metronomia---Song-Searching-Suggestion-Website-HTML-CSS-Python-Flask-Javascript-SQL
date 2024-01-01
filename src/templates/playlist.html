@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+    </head>
+    <body>
+        <title>Your Playlist</title>
+        <div class="hero">
+            <nav>
+                <a href="{{url_for('index')}}"><img src="../static/assets/MetronomiaLogopng.png" alt="Logo" width="200" height="100"></a>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('artists')}}">Artists</a></li>
+                    <li><a href="{{url_for('indextopalbum')}}">Albums</a></li>
+                    <li><a href="{{url_for('about')}}">About Us</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('spotlight')}}">Artist Spotlight</a></li>
+                    <li><a href="{{url_for('playlist')}}" style="color: #ADFF2F">Your Playlist</a></li>
+                </ul>
+            </nav>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h1 style="font-size:60px; font-family:didot, serif; margin-left:5%">Your Playlist <img src="../static/assets/icons8-playlist-96.png" width="45px"></h1>
+        {% if data %}
+        <table style="margin-left:5%; margin-right:5%; width:90%; color:lightgrey; font-size:25px; border-spacing: 15px;">
+            <tr>
+                <td style="text-align:left">
+                    <span style="color:grey; font-size:20px">Song Name</span>
+                </td>
+                <td style="text-align:right;"></td>
+            </tr>
+            {% for row in data %}
+                <tr style="color: lightgrey;">
+                    <td style="text-align:left">{{ row[1] }}</td>
+                    <td style="text-align:right;">
+                        <form method="POST" action="{{url_for('remove_song')}}" style="margin-top: auto; margin-bottom: auto;">
+                            <input type="hidden" name="song_id" value="{{ row[0] }}">
+                            <button type="submit">Remove from Playlist</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p style="text-align: center; color:grey"><img src="../static/assets/icons8-cobweb-64.png" width="20px"> No songs here, go to the <a href="{{url_for('indextopalbum')}}" style="text-decoration:none; color: lightgrey">home page</a> or the <a href="{{url_for('artists')}}" style="text-decoration:none; color: lightgrey">artists page</a> to add songs!</p>
+        {% endif %}
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <footer>
+            <hr style="width: 90%; text-align: center;">
+            <p>Created with you in mind by <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Archit Narwadkar</a></b> and <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Chirag Dhamija</a></b>.</p>
+            <p>Metronomia © 2023</p>
+        </footer>
+    </body>
+</html>

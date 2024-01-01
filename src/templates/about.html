@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+    </head>
+    <body style="font: times">
+        <title>About Metronomia</title>
+        <div class="hero">
+            <nav>
+                <a href="{{url_for('index')}}"><img src="../static/assets/MetronomiaLogopng.png" alt="Logo" width="200" height="100"></a>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('artists')}}">Artists</a></li>
+                    <li><a href="{{url_for('indextopalbum')}}">Albums</a></li>
+                    <li><a href="{{url_for('about')}}" style="color: #ADFF2F">About Us</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('spotlight')}}">Artist Spotlight</a></li>
+                    <li><a href="{{url_for('playlist')}}" style="color: #ADFF2F">Your Playlist</a></li>
+                </ul>
+            </nav>
+        </div>
+        <br/>
+        <img src="../static/assets/MetronomiaLogopng.png" width="100%">
+        <p>Metronomic songs to headbang to!</i></p>
+        <p>Metronomia is your own personal space in the wonderful world of <img src=../static/assets/icons8-headphones-30.png width="15px">. Find the beats you know or discover something new, it's all up to you.</p>
+        <p>Hold on to your favourites with <img src=../static/assets/icons8-facebook-like-24.png width="18px">, <img src=../static/assets/icons8-molecule-91.png width="15px"> your viral bpms with your friends over on social media, or cheer for the creators that musify<img src=../static/assets/icons8-music-24.png width="15px"> your day, it's all here.</p>
+        <p>Best of all, you don't have to worry about leaving anything behind, your music always stays with you, wherever you are.</p>
+        <br/>
+        <br/>
+        <h1 style="font-size:50px;">About Us</h1>
+        <p>Vibed into reality by <b>Archit Narwadkar</b> and <b>Chirag Dhamija</b>.</p>
+        <table style="width:100%; text-align:center; padding:10%; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px">
+            <tr>
+                <td>
+                    <img src="../static/assets/WhatsApp Image 2023-04-09(1).jpeg" style="width:40%">
+                    <h3><a href="https://linktr.ee/narwadkararchit" style="color:white;text-decoration:none;">Archit Narwadkar<img src=../static/assets/linktree-logo-icon.svg style="width:20px"></a></h3>
+                    archit.narwadkar@research.iiit.ac.in<br/>
+                    <p id="description1"></p>
+                </td>
+                <td>
+                    <img src="../static/assets/WhatsApp Image 2023-04-09.jpeg" style="width:40%">
+                    <h3><a href="https://linktr.ee/its_chirag0203" style="color:white;text-decoration:none;">Chirag Dhamija<img src=../static/assets/linktree-logo-icon.svg style="width:20px"></a></h3>
+                    chirag.dhamija@students.iiit.ac.in<br/>
+                    <p id="description2"></p>
+                </td>
+            </tr>
+        </table>
+        <footer>
+            <hr style="width: 90%; text-align: center;">
+            <p>Created with you in mind by <b><a href="about.html" style="color:white;text-decoration:none;">Archit Narwadkar</a></b> and <b><a href="about.html" style="color:white;text-decoration:none;">Chirag Dhamija</a></b>.</p>
+            <p>Metronomia © 2023</p>
+        </footer>
+        <script>
+            var txt1="I am a student at IIIT Hyderabad and have created a website that showcases my passion for web development and design. I have put in a lot of effort and dedication to create a great user experience. My goal is to impress visitors with the website's design and ease of use. As a student, I am always learning and striving to improve my skills. Thank you for visiting my website, and I hope you enjoy it as much as I enjoyed making it.";
+            var txt2="Student at IIIT Hyderabad. Hi, I'm a college student who created this website. I have a passion for web development and design, and I poured a lot of hard work and dedication into bringing this vision to life. My goal is to provide a great user experience while showcasing my skills and creativity. I hope you enjoy using the site as much as I enjoyed creating it. Thank you for visiting!";
+            var speed=50;
+            window.onload=function() {
+                Description1();
+                Description2();
+            }
+            var i1=0;
+            function Description1() {
+                if (i1<txt1.length) {
+                    document.getElementById("description1").innerHTML+=txt1.charAt(i1);
+                    i1++;
+                    setTimeout(Description1, speed);
+                }
+            }
+            var i2=0;
+            function Description2() {
+                if (i2<txt2.length) {
+                    document.getElementById("description2").innerHTML+=txt2.charAt(i2);
+                    i2++;
+                    setTimeout(Description2, speed);
+                }
+            }
+        </script>
+    </body>
+</html>

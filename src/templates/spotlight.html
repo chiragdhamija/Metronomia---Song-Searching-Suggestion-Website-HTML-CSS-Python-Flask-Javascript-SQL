@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+    </head>
+    <body>
+        <title>Artist Spotlight</title>
+        <div class="hero">
+            <nav>
+                <a href="{{url_for('index')}}"><img src="../static/assets/MetronomiaLogopng.png" alt="Logo" width="200" height="100"></a>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('artists')}}">Artists</a></li>
+                    <li><a href="{{url_for('indextopalbum')}}">Albums</a></li>
+                    <li><a href="{{url_for('about')}}">About Us</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('spotlight')}}" style="color: #ADFF2F">Artist Spotlight</a></li>
+                    <li><a href="{{url_for('playlist')}}"">Your Playlist</a></li>
+                </ul>
+            </nav>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h1 style="font-size:60px; font-family:didot, serif; margin-left:5%">In The Limelight <img src="../static/assets/icons8-spotlight-80.png" width="60px"></h1>
+        <br/>
+        <table style="width: 100%; height:100%; text-align:center; margin-left:auto; margin-right:auto;">
+            <tr style="text-align:center; margin:auto">
+                <td style="text-align:center"><a href="artist02-albums.html"><img onmouseover="zoomIn(this)" onmouseout="zoomOut(this)" id="img1" src="../static/assets/nucleya.jpg" style="margin:auto; width:50%; border-radius:15%"></a></td>
+                <td style="padding:3%; color:lightgrey; font-size:16px;"><a href="artist02-albums.html" style="text-decoration:none"><b style="color:#ADFF2F;">Nucleya</b></a> is a highly respected and accomplished Indian electronic music producer and DJ. He is widely regarded as a <b style="color:gold">pioneer</b> in the Indian electronic music scene and has made a significant impact with his <b style="color:aqua">unique and innovative</b> approach to blending traditional Indian music with electronic dance music. His music is a true reflection of his artistic vision, and he has gained a loyal following of fans who appreciate his ability to create exciting and <b style="color:magenta">memorable</b> beats. Nucleya has collaborated with some of the most well-known artists in the industry and has performed at some of the most prestigious music festivals around the world. His contribution to the electronic music scene in India is immeasurable, and he is <b style="color:red">a true inspiration</b> to aspiring musicians everywhere.</td>
+            </tr>
+        </table>
+        <br/>
+        <h1 style="font-size:40px; font-family:didot, serif; margin-left:5%">What Others Say <img src="../static/assets/icons8-very-popular-topic-100.png" width="40px"></h1>
+        <table style="text-align:center; width:70%; font-size:16px; margin:auto; color: lightgrey" id="reviews">
+            <tr>
+                <td><b>Username</b></td>
+                <td><b>Rating</b></td>
+                <td><b>Review</b></td>
+            </tr>
+        </table>
+        <form style="margin:auto">
+            <table style="text-align:center; width:70%; font-size:16px; margin:auto;">
+                <tr>
+                    <td><input style="background-color: black; border:none; color:lightgrey; text-align:center" type="text" id="username" placeholder="Username" required></td>
+                    <td style="text-align:center;">
+                        <div class="rating">
+                            <span class="star" data-value="1">&#9733;</span>
+                            <span class="star" data-value="2">&#9733;</span>
+                            <span class="star" data-value="3">&#9733;</span>
+                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="star" data-value="5">&#9733;</span>
+                        </div>
+                    </td>
+                    <td><input style="background-color: black; border:none; color:lightgrey; text-align:center" type="text" id="review" placeholder="Write a review!" required></td>
+                </tr>
+                <tr style="text-align:center"><td><button style="color:#D79EFF; background-color:black; border:none" type="button" onclick="addReview()">Submit Review</button></td></tr>
+            </table>
+        </form>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <!-- <h1 style="font-size:70px; text-align:center">Countdown to the Showdown</h1> -->
+        <h1 style="font-size:70px; text-align:center">Album Drop: Countdown to Showtime!</h1>
+        <p style="font-size:35px; text-align:center"><b>Nucleya's Newest Album is coming to Metronomia</b></p>
+        <p style="font-size:35px; text-align:center"><b>in</b></p>
+        <p style="text-align:center; font-size:100px" id="demo"></p>
+        <footer>
+            <hr style="width: 90%; text-align: center;">
+            <p>Created with you in mind by <b><a href="about.html" style="color:white;text-decoration:none;">Archit Narwadkar</a></b> and <b><a href="about.html" style="color:white;text-decoration:none;">Chirag Dhamija</a></b>.</p>
+            <p>Metronomia © 2023</p>
+        </footer>
+        <script type="text/javascript">
+            function zoomIn(img) {
+                img.style.transform="scale(1.1)";
+                img.style.zIndex="-1";
+            }
+            function zoomOut(img) {
+                img.style.transform="scale(1)";
+                img.style.zIndex="-1";
+            }
+            var countDownDate=new Date("June 30, 2023 00:00:00").getTime();
+            var x=setInterval(function() {
+                var now=new Date().getTime();
+                var distance=countDownDate - now;
+                var days=Math.floor(distance/(1000*60*60*24));
+                var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+                var minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+                var seconds=Math.floor((distance%(1000*60))/1000);
+                document.getElementById("demo").innerHTML=days+"d "+hours+"h "+minutes+"m "+seconds+"s ";
+                if (distance<0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML="EXPIRED";
+                }
+            }, 1000);
+            const stars=document.querySelectorAll('.star');
+            let numStarsSelected=0;
+            function selectStar() {
+            numStarsSelected=this.getAttribute('data-value');
+            stars.forEach(star => {
+                    if (star.getAttribute('data-value') <= numStarsSelected) {
+                        star.classList.add('selected');
+                    } else {
+                        star.classList.remove('selected');
+                    }
+                });
+                console.log(`Number of stars selected: ${numStarsSelected}`);
+            }
+            stars.forEach(star => {
+                star.addEventListener('click', selectStar);
+            });
+            function addReview() {
+                var username = document.getElementById("username").value;
+                var rating = numStarsSelected;
+                var review = document.getElementById("review").value;
+                var table = document.getElementById("reviews");
+                var row = table.insertRow(1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                cell1.innerHTML = username;
+                cell2.innerHTML = rating;
+                cell3.innerHTML = review;
+                document.querySelector('form').reset();
+            }
+        </script>
+    </body>
+</html>

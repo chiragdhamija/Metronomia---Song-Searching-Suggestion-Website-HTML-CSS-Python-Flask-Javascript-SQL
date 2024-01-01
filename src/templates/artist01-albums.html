@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+    </head>
+    <body>
+        <title>Siddhu Moosewala</title>
+        <div class="hero">
+            <nav>
+                <a href="{{url_for('index')}}"><img src="../static/assets/MetronomiaLogopng.png" alt="Logo" width="200" height="100"></a>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('artists')}}">Artists</a></li>
+                    <li><a href="" style="color: #ADFF2F;">Albums</a></li>
+                    <li><a href="{{url_for('about')}}">About Us</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('spotlight')}}">Artist Spotlight</a></li>
+                    <li><a href="{{url_for('playlist')}}">Your Playlist</a></li>
+                </ul>
+            </nav>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="container">
+            <img src="../static/assets/sidhu moosewala.jpg" style="float:left;width:15%;border-radius:50%;"alt="image">
+            <div class="text">
+                <p style="font-size: 50px;">Sidhu Moosewala<br/><span class="smallheadtext">Albums</span></p>
+            </div>
+        </div>
+        <table style="width: 90%; text-align:center; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px">
+            <tr>
+                <td><a href="{{url_for('No_Name')}}"><img src="../static/assets/noname.png"></a><br/>
+                    <div style="font-size:22px"><a href="album15-songs.html" style="color:lightgrey; text-decoration:none;">No Name</a></div>
+                    5 songs<br/>
+                    2022<br/>
+                </td>
+                <td><a href="{{url_for('Yes_I_Am_Student')}}"><img src="../static/assets/yesiamstudent.png"></a><br/>
+                    <div style="font-size:22px"><a href="album14-songs.html" style="color:lightgrey; text-decoration:none;">Yes I Am Student</a></div>
+                    6 songs<br/>
+                    2021<br/>
+                </td>
+                <td><a href="{{url_for('Moosetape')}}"><img src="../static/assets/moosetape.png"></a><br/>
+                    <div style="font-size:22px"><a href="album11-songs.html" style="color:lightgrey; text-decoration:none;">Moosetape</a></div>
+                    32 songs<br/>
+                    2021<br/>
+                </td>
+            </tr>
+        </table>
+        <table style="width: 60%; text-align:center; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px">
+            <tr>
+                <td><a href="{{url_for('Snitches_Get_Stitches')}}"><img src="../static/assets/snitchesgetstiches.png"></a><br/>
+                    <div style="font-size:22px"><a href="album13-songs.html" style="color:lightgrey; text-decoration:none;">Snitches Get Stitches</a></div>
+                    8 songs<br/>
+                    2020<br/>
+                </td>
+                <td><a href="{{url_for('Pbx1')}}"><img src="../static/assets/pbx1.png"></a><br/>
+                    <div style="font-size:22px"><a href="album12-songs.html" style="color:lightgrey; text-decoration:none;">Pbx1</a></div>
+                    13 songs<br/>
+                    2018<br/>
+                </td>
+            </tr>
+        </table>
+        <footer>
+            <hr style="width: 90%; text-align: center;">
+            <p>Created with you in mind by <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Archit Narwadkar</a></b> and <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Chirag Dhamija</a></b>.</p>
+            <p>Metronomia © 2023</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+    </head>
+    <body>
+        <title>Home</title>
+        <div class="hero">
+            <nav>
+                <a href="{{url_for('index')}}"><img src="../static/assets/MetronomiaLogopng.png" alt="Logo" width="200" height="100"></a>
+                <ul>
+                    <li><a href="{{url_for('index')}}" style="color: #ADFF2F">Home</a></li>
+                    <li><a href="{{url_for('artists')}}">Artists</a></li>
+                    <li><a href="{{url_for('indextopalbum')}}">Albums</a></li>
+                    <li><a href="{{url_for('about')}}">About Us</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('spotlight')}}">Artist Spotlight</a></li>
+                    <li><a href="{{url_for('playlist')}}">Your Playlist</a></li>
+                </ul>
+            </nav>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <!-- <h1 style="font-size:60px; font-family:didot, serif;">Chart Toppers <img src=../static/assets/icons8-positive-dynamic-48.png width="60px"></h1> -->
+        <h1 style="font-size:60px; font-family:didot, serif; margin-left:5%"><span id="title1"></span></h1>
+        <table style="width: 90%; text-align:center; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px">
+            <tr>
+                <td><a href=""><img src="../static/assets/countingstars(one republic).png"></a><br/>
+                    <div style="font-size:22px"><a href="" style="color:lightgrey; text-decoration:none;">Counting Stars</a></div>
+                    One Republic<br/>
+                </td>
+                <td><a href=""><img src="../static/assets/apnabanale(Arijit Singh).png"></a><br/>
+                    <div style="font-size:22px"><a href="" style="color:lightgrey; text-decoration:none;">Apna Bana Le</a></div>
+                    Arijit Singh<br/>
+                </td>
+                <td><a href=""><img src="../static/assets/maanmerijaan(king).png"></a><br/>
+                    <div style="font-size:22px"><a href="" style="color:lightgrey; text-decoration:none;">Maan Meri Jaan</a></div>
+                    King<br/>
+                </td>
+            </tr>
+        </table>
+        <h1 style="font-size:60px; font-family:didot, serif; margin-left:5%"><span id="title2"></span><span id="title2a" style="font-family: brush script mt, cursive;"></span></h1>
+        <table style="width: 90%; text-align:center; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px">
+            <tr>
+                <td><a href="{{url_for('Nucleya')}}"><img src="../static/assets/nucleya.jpg" style="border-radius:50%;"></a><br/>
+                    <div style="font-size:22px;"><a href="{{url_for('Nucleya')}}" style="color:lightgrey; text-decoration:none;">Nucleya</a></div>
+                </td>
+                <td><a href="{{url_for('Sidhu_Moosewala')}}"><img src="../static/assets/sidhu moosewala.jpg" style="border-radius:50%;"></a><br/>
+                    <div style="font-size:22px"><a href="{{url_for('Sidhu_Moosewala')}}" style="color:lightgrey; text-decoration:none;">Sidhu Moosewala</a></div>
+                </td>
+                <td><a href="{{url_for('Imagine_Dragons')}}"><img src="../static/assets/imagine dragons.jpg" style="border-radius:50%;"></a><br/>
+                    <div style="font-size:22px"><a href="{{url_for('Imagine_Dragons')}}" style="color:lightgrey; text-decoration:none;">Imagine Dragons</a></div>
+                </td>
+            </tr>
+        </table>
+        <h1 style="font-size:60px; font-family:didot, serif; margin-left:5%"><span id="title3"></span></h1>
+        <table style="width: 90%; text-align:center; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px" id="topalbum">
+            <tr>
+                <td><a href="{{url_for('Starboy')}}"><img src="../static/assets/starboy.png"></a><br/>
+                    <div style="font-size:22px"><a href="{{url_for('Starboy')}}" style="color:lightgrey; text-decoration:none;">Starboy</a></div>
+                    18 songs<br/>
+                    2016<br/>
+                </td>
+                <td><a href="{{url_for('The_Carnival')}}"><img src="../static/assets/carnival.png"></a><br/>
+                    <div style="font-size:22px"><a href="{{url_for('The_Carnival')}}" style="color:lightgrey; text-decoration:none;">The Carnival</a></div>
+                    7 songs<br/>
+                    2020<br/>
+                </td>
+                <td><a href="{{url_for('Rockstar')}}"><img src="../static/assets/rockstar.png"></a><br/>
+                    <div style="font-size:22px"><a href="{{url_for('Rockstar')}}" style="color:lightgrey; text-decoration:none;">Rockstar</a></div>
+                    15 songs<br/>
+                    2011<br/>
+                </td>
+            </tr>
+        </table>
+        <footer>
+            <hr style="width: 90%; text-align: center;">
+            <p>Created with you in mind by <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Archit Narwadkar</a></b> and <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Chirag Dhamija</a></b>.</p>
+            <p>Metronomia © 2023</p>
+        </footer>
+    </body>
+    <script>
+        txt1="Record Breaking Songs ";
+        txt2='Artists that ';
+        txt2a='Rock ';
+        txt3="Banger Albums ";
+        var speed=50;
+        window.onload=function() {
+            Title1();
+            Title2();
+            Title3();
+        }
+        var i1=0;
+        function Title1() {
+            if (i1<txt1.length) {
+                document.getElementById("title1").innerHTML+=txt1.charAt(i1);
+                i1++;
+                setTimeout(Title1, speed);
+            }
+            else {
+                document.getElementById("title1").innerHTML+='<img src=../static/assets/icons8-warranty-48.png width="35">';
+            }
+        }
+        var i2=0;
+        var i2a=0;
+        function Title2() {
+            if (i2<txt2.length) {
+                document.getElementById("title2").innerHTML+=txt2.charAt(i2);
+                i2++;
+                setTimeout(Title2, speed);
+            }
+            else {
+                Title2a();
+            }
+        }
+        function Title2a() {
+            if (i2a<txt2a.length) {
+                document.getElementById("title2a").innerHTML+=txt2a.charAt(i2a);
+                i2a++;
+                setTimeout(Title2a, speed);
+            }
+            else {
+                document.getElementById("title2a").innerHTML+='<img src=../static/assets/icons8-rock-music-48.png width="35px">';
+            }
+        }
+        var i3=0;
+        function Title3() {
+            if (i3<txt3.length) {
+                document.getElementById("title3").innerHTML+=txt3.charAt(i3);
+                i3++;
+                setTimeout(Title3, speed);
+            }
+            else {
+                document.getElementById("title3").innerHTML+='<img src="../static/assets/icons8-firework-explosion-48.png" width="35px">';
+            }
+        }
+    </script>
+</html>

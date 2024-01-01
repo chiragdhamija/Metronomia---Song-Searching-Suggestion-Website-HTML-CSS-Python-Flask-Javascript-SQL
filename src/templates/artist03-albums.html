@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+    </head>
+    <body>
+        <title>Imagine Dragons</title>
+       <div class="hero">
+            <nav>
+                <a href="{{url_for('index')}}"><img src="../static/assets/MetronomiaLogopng.png" alt="Logo" width="200" height="100"></a>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('artists')}}">Artists</a></li>
+                    <li><a href="" style="color: #ADFF2F;">Albums</a></li>
+                    <li><a href="{{url_for('about')}}">About Us</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('spotlight')}}">Artist Spotlight</a></li>
+                    <li><a href="{{url_for('playlist')}}">Your Playlist</a></li>
+                </ul>
+            </nav>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="container">
+            <img src="../static/assets/imagine dragons.jpg" style="float:left;width:15%;border-radius:50%;"alt="image">
+            <div class="text">
+                <p style="font-size: 50px;">Imagine Dragons<br/><span class="smallheadtext">Albums</span></p>
+            </div>
+        </div>  
+        <table style="width: 90%; text-align:center; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px">
+            <tr>
+                <td><a href="{{url_for('Mercury_Acts')}}"><img src="../static/assets/mercuryacts.png"></a><br/>
+                    <div style="font-size:22px"><a href="album34-songs.html" style="color:lightgrey; text-decoration:none;">Mercury Acts</a></div>
+                    32 songs<br/>
+                    2022<br/>
+                </td>
+                <td><a href="{{url_for('Origins_Deluxe')}}"><img src="../static/assets/origins(Deluxe).png"></a><br/>
+                    <div style="font-size:22px"><a href="album33-songs.html" style="color:lightgrey; text-decoration:none;">Origins (Deluxe)</a></div>
+                    15 songs<br/>
+                    2018<br/>
+                </td>
+                <td><a href="{{url_for('Evolve')}}"><img src="../static/assets/evolve.png"></a><br/>
+                    <div style="font-size:22px"><a href="album32-songs.html" style="color:lightgrey; text-decoration:none;">Evolve</a></div>
+                    12 songs<br/>
+                    2017<br/>
+                </td>
+            </tr>
+            </table>
+            <table style="width: 60%; text-align:center; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px">
+            <tr>
+                <td><a href="{{url_for('Smoke_Mirrors_Deluxe')}}"><img src="../static/assets/smoke+mirror.png"></a><br/>
+                    <div style="font-size:22px"><a href="album35-songs.html" style="color:lightgrey; text-decoration:none;">Smoke + Mirrors (Deluxe)</a></div>
+                    19 songs<br/>
+                    2015<br/>
+                </td>
+                <td><a href="{{url_for('Night_Visions')}}"><img src="../static/assets/nightvisions.png"></a><br/>
+                    <div style="font-size:22px"><a href="album31-songs.html" style="color:lightgrey; text-decoration:none;">Night Visions</a></div>
+                    14 songs<br/>
+                    2012<br/>
+                </td>
+            </tr>
+        </table>
+        <footer>
+            <hr style="width: 90%; text-align: center;">
+            <p>Created with you in mind by <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Archit Narwadkar</a></b> and <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Chirag Dhamija</a></b>.</p>
+            <p>Metronomia © 2023</p>
+        </footer>
+    </body>
+</html>

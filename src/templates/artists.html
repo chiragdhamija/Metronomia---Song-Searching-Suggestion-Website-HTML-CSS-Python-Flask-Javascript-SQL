@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+    </head>
+    <body>
+        <title>Artists</title>
+        <div class="hero">
+            <nav>
+                <a href="index.html"><img src="../static/assets/MetronomiaLogopng.png" alt="Logo" width="200" height="100"></a>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('artists')}}" style="color: #ADFF2F;">Artists</a></li>
+                    <li><a href="{{url_for('indextopalbum')}}">Albums</a></li>
+                    <li><a href="{{url_for('about')}}">About Us</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('spotlight')}}">Artist Spotlight</a></li>
+                    <li><a href="{{url_for('playlist')}}">Your Playlist</a></li>
+                </ul>
+            </nav>
+        </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h1 style="font-size:50px; margin-left:5%">Artists</h1>
+        <table style="width: 90%; text-align:center; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px">
+            <tr>
+                <td><a href="{{url_for('Sidhu_Moosewala')}}"><img src="../static/assets/sidhu moosewala.jpg" style="float:left;width:100%;border-radius:50%;"alt="image"></a><br/>
+                    <div style="font-size:22px"><a href="artist01-albums.html" style="color:white;text-decoration:none;">Sidhu Moosewala</a></div>
+                    5 albums<br/>
+                </td>
+                <td><a href="{{url_for('Nucleya')}}"><img src="../static/assets/nucleya.jpg" style="float:left;width:100%;border-radius:50%;"alt="image"></a><br/>
+                    <div style="font-size:22px"><a href="artist02-albums.html" style="color:white;text-decoration:none;">Nucleya</a></div>
+                    5 albums<br/>
+                </td>
+                <td><a href="{{url_for('Imagine_Dragons')}}"><img src="../static/assets/imagine dragons.jpg" style="float:left;width:100%;border-radius:50%;"alt="image"></a><br/>
+                    <div style="font-size:22px"><a href="artist03-albums.html" style="color:white;text-decoration:none;">Imagine Dragons</a></div>
+                    5 albums<br/>
+                </td>
+            </tr>
+            </table>
+            <table style="width: 90%; text-align:center; font-size:16px; margin-left:auto; margin-right:auto; border-spacing:20px">
+            <tr>
+                <td><a href="{{url_for('Alan_Walker')}}"><img src="../static/assets/alan walker.jpg" style="float:left;width:100%;border-radius:50%;"alt="image"></a><br/>
+                    <div style="font-size:22px"><a href="artist04-albums.html" style="color:white;text-decoration:none;">Alan Walker</a></div>
+                    5 albums<br/>
+                </td>
+                <td><a href="{{url_for('Diljit_Dosanjh')}}"><img src="../static/assets/diljit dosanjh.jpg" style="float:left;width:100%;border-radius:50%;"alt="image"></a><br/>
+                    <div style="font-size:22px"><a href="artist05-albums.html" style="color:white;text-decoration:none;">Diljit Dosanjh</a></div>
+                    5 albums<br/>
+                </td>
+                <td><a href="{{url_for('Raghu_Dixit')}}"><img src="../static/assets/raghu dixit.png" style="float:left;width:100%;border-radius:50%;"alt="image"></a><br/>
+                    <div style="font-size:22px"><a href="artist06-albums.html" style="color:white;text-decoration:none;">Raghu Dixit</a></div>
+                    4 albums<br/>
+                </td>
+            </tr>
+        </table>
+        <footer>
+            <hr style="width: 90%; text-align: center;">
+            <p>Created with you in mind by <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Archit Narwadkar</a></b> and <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Chirag Dhamija</a></b>.</p>
+            <p>Metronomia © 2023</p>
+        </footer>
+    </body>
+</html>

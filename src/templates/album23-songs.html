@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nucleya - Koocha Monster</title>
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
+</head>
+
+<body style="font: times;color: white">
+    <div class="hero">
+        <nav>
+            <a href="{{url_for('index')}}"><img src="../static/assets/MetronomiaLogopng.png" alt="Logo" width="200" height="100"></a>
+            <ul>
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="{{url_for('artists')}}">Artists</a></li>
+                <li><a href="{{url_for('Nucleya')}}" style="color: #ADFF2F;">Albums</a></li>
+                <li><a href="{{url_for('about')}}">About Us</a></li>
+                <li><a href="{{url_for('search')}}">Search</a></li>
+                <li><a href="{{url_for('spotlight')}}">Artist Spotlight</a></li>
+                <li><a href="{{url_for('playlist')}}">Your Playlist</a></li>
+            </ul>
+        </nav>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <img src="../static/assets/koochamonster.png" style="float:left;width:15%;" alt="image">
+        <div class="text">
+            <p
+                style="font-size: 50px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                Koocha Monster<br /><span class="smallheadtext">Nucleya</span></p>
+        </div>
+    </div>
+    <div>
+        <span class="left">Title</span>
+        <span class="right"><img src=../static/assets/clock2.png width="25px"></span>
+    </div>
+    <br />
+    <br />
+    <div>
+        <span class="leftsong">Street Boy </span>
+        <span class="rightsong">3:44</span>
+        <button class="middle" style="background-color:transparent;">
+            <span><img src="../static/assets/playlist.png"></span>
+        </button>
+    </div>
+    <br />
+    <br />
+    <div>
+        <span class="leftsong">Bell Gadi</span>
+        <span class="rightsong">3:29</span>
+        <button class="middle" style="background-color:transparent;">
+            <span><img src="../static/assets/playlist.png"></span>
+        </button>
+    </div>
+    <br />
+    <br />
+    <div>
+        <span class="leftsong">Akkad Bakkad</span>
+        <span class="rightsong">3:47</span>
+        <button class="middle" style="background-color:transparent;">
+            <span><img src="../static/assets/playlist.png"></span>
+        </button>
+    </div>
+    <br />
+    <br />
+    <div>
+        <span class="leftsong">Bangla Boss</span>
+        <span class="rightsong">3:10</span>
+        <button class="middle" style="background-color:transparent;">
+            <span><img src="../static/assets/playlist.png"></span>
+        </button>
+    </div>
+    <br />
+    <br />
+    <div>
+        <span class="leftsong">Jam Rock</span>
+        <span class="rightsong">3:53</span>
+        <button class="middle" style="background-color:transparent;">
+            <span><img src="../static/assets/playlist.png"></span>
+        </button>
+    </div>
+    <br />
+    <br />
+    <div>
+        <span class="leftsong">New Delhi Nuttah</span>
+        <span class="rightsong">4:33</span>
+        <button class="middle" style="background-color:transparent;">
+            <span><img src="../static/assets/playlist.png"></span>
+        </button>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <footer>
+        <hr style="width: 90%; text-align: center;">
+        <p>Created with you in mind by <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Archit Narwadkar</a></b> and <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Chirag Dhamija</a></b>.</p>
+        <p>Metronomia © 2023</p>
+    </footer>
+    <script>
+
+        const buttons = document.querySelectorAll('.middle');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+
+                const parentDiv = button.parentElement;
+
+
+                const songName = parentDiv.querySelector('.leftsong').textContent;
+
+               
+                fetch('/add_song', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ song_name: songName })
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('Song added successfully!');
+                        } else {
+                            console.log('Error adding song.');
+                        }
+                    })
+                    .catch(error => console.log(error));
+            });
+        });
+
+    </script>
+</body>
+
+</html>

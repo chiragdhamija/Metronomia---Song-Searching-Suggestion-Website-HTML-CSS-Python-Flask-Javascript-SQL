@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+    </head>
+    <body>
+        <title>Search</title>
+        <div class="hero">
+            <nav>
+                <a href="index.html"><img src="../static/assets/MetronomiaLogopng.png" alt="Logo" width="200" height="100"></a>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('artists')}}">Artists</a></li>
+                    <li><a href="{{url_for('indextopalbum')}}">Albums</a></li>
+                    <li><a href="{{url_for('about')}}">About Us</a></li>
+                    <li><a href="{{url_for('search')}}" style="color: #ADFF2F">Search</a></li>
+                    <li><a href="{{url_for('spotlight')}}">Artist Spotlight</a></li>
+                    <li><a href="{{url_for('playlist')}}">Your Playlist</a></li>
+                </ul>
+            </nav>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <form>
+            <input type="text" id="search" placeholder="Search">
+            <button type="submit">Search</button>
+            <div class="checkbox-wrapper">
+                <input type="checkbox" name="excle" value="expl" id="explicit">
+                <label for="explicit">Explicit</label>
+            </div>
+            <div class="duration-wrapper">
+                <label for="duration">Duration (in minutes):</label>
+                <input type="number" id="duration" name="duration" min="1">
+                <input type="reset" value="Reset Filters">
+            </div>
+            <!-- <button type="button" onclick="resetFilters()">Remove Filters</button> -->
+        </form>
+        <br>
+        <div class="results"></div>
+        <footer>
+            <hr style="width: 90%; text-align: center;">
+            <p>Created with you in mind by <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Archit Narwadkar</a></b> and <b><a href="{{url_for('about')}}" style="color:white;text-decoration:none;">Chirag Dhamija</a></b>.</p>
+            <p>Metronomia © 2023</p>
+        </footer>
+        <script>
+            const form = document.querySelector('form');
+            const input = document.querySelector('#search');
+            const results = document.querySelector('.results');
+            const durationInput = document.getElementById('duration');
+            var rockCheckbox = document.querySelector('input[name="excle"][value="expl"]');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const duration = durationInput.value;
+                console.log(`Duration value: ${duration}`);
+                const toSearch = input.value.trim();
+                const searchTerm = encodeURI(toSearch);
+                if (searchTerm !== '') {
+                    let url = `https://itunes.apple.com/search?term=${searchTerm}&limit=200&explicit=no`
+                    if (rockCheckbox.checked) {
+                        url = `https://itunes.apple.com/search?term=${searchTerm}&limit=200`
+                    }
+                    else {
+                        url = `https://itunes.apple.com/search?term=${searchTerm}&limit=200&explicit=no`
+                    }
+                    console.log(url);
+                    fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        results.innerHTML = '';
+                        if (data.results.length > 0) {
+                            if (duration == '') {
+                                var count_songs = 0;
+                                for (let i = 0; i < data.results.length; i++) {
+                                    let result = data.results[i];
+                                    if (result.kind === 'song' && result.trackViewUrl) {
+                                        if (count_songs >= 10) {
+                                            break;
+                                        }
+                                        count_songs = count_songs + 1;
+                                        const resultDiv = document.createElement('div');
+                                        resultDiv.classList.add('result');
+                                        resultDiv.innerHTML = `
+                                            <img src="${result.artworkUrl100}">
+                                            <div class="info">
+                                                <h2>${result.trackName}</h2>
+                                                <p>${result.artistName}</p>
+                                                <div class="audio-player">
+                                                    <button class="play-btn">
+                                                        <img src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png"/>
+                                                    </button>
+                                                    <div class="progress">
+                                                        <div class="bar"></div>
+                                                    </div>
+                                                    <span class="time">0:00</span>
+                                                </div>
+                                            </div>
+                                        `;
+                                        results.appendChild(resultDiv);
+                                        const playBtn = resultDiv.querySelector('.play-btn');
+                                        const audio = new Audio(result.previewUrl);
+                                        playBtn.addEventListener('click', () => {
+                                            if (audio.paused) {
+                                                audio.play();
+                                                playBtn.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/000000/pause--v1.png"/>';
+                                            } else {
+                                                audio.pause();
+                                                playBtn.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png"/>';
+                                            }
+                                        });
+                                        audio.addEventListener('timeupdate', () => {
+                                            const bar = resultDiv.querySelector('.bar');
+                                            const time = resultDiv.querySelector('.time');
+                                            const percent = (audio.currentTime / audio.duration) * 100;
+                                            bar.style.width = `${percent}%`;
+                                            const minutes = Math.floor(audio.currentTime / 60);
+                                            const seconds = Math.floor(audio.currentTime % 60);
+                                            time.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                                        });
+                                        audio.addEventListener('ended', () => {
+                                            playBtn.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png"/>';
+                                            audio.currentTime = 0;
+                                            const bar = resultDiv.querySelector('.bar');
+                                            bar.style.width = '0%';
+                                            const time = resultDiv.querySelector('.time');
+                                            time.textContent = '0:00';
+                                        });
+                                    }
+                                };
+                            }
+                            else if (duration != '') {
+                                var count = 0;
+                                var count_songs = 0;
+                                for (let i = 0; i < data.results.length; i++) {
+                                    let result = data.results[i];
+                                    if (result.kind === 'song' && result.trackViewUrl && result.trackTimeMillis / 60000 <= duration) {
+                                        if (count_songs >= 10) {
+                                            break;
+                                        }
+                                        count = count + 1;
+                                        count_songs = count_songs + 1;
+                                        const resultDiv = document.createElement('div');
+                                        resultDiv.classList.add('result');
+                                        resultDiv.innerHTML = `
+                                            <img src="${result.artworkUrl100}">
+                                            <div class="info">
+                                                <h2>${result.trackName}</h2>
+                                                <p>${result.artistName}</p>
+                                                <div class="audio-player">
+                                                    <button class="play-btn">
+                                                        <img src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png"/>
+                                                    </button>
+                                                <div class="progress">
+                                                    <div class="bar"></div>
+                                                </div>
+                                                <span class="time">0:00</span>
+                                                </div>
+                                            </div>
+                                        `;
+                                        results.appendChild(resultDiv);
+                                        const playBtn = resultDiv.querySelector('.play-btn');
+                                        const audio = new Audio(result.previewUrl);
+                                        playBtn.addEventListener('click', () => {
+                                            if (audio.paused) {
+                                                audio.play();
+                                                playBtn.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/000000/pause--v1.png"/>';
+                                            } else {
+                                                audio.pause();
+                                                playBtn.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png"/>';
+                                            }
+                                        });
+                                        audio.addEventListener('timeupdate', () => {
+                                            const bar = resultDiv.querySelector('.bar');
+                                            const time = resultDiv.querySelector('.time');
+                                            const percent = (audio.currentTime / audio.duration) * 100;
+                                            bar.style.width = `${percent}%`;
+                                            const minutes = Math.floor(audio.currentTime / 60);
+                                            const seconds = Math.floor(audio.currentTime % 60);
+                                            time.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                                        });
+                                        audio.addEventListener('ended', () => {
+                                            playBtn.innerHTML = '<img src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png"/>';
+                                            audio.currentTime = 0;
+                                            const bar = resultDiv.querySelector('.bar');
+                                            bar.style.width = '0%';
+                                            const time = resultDiv.querySelector('.time');
+                                            time.textContent = '0:00';
+                                        });
+                                    }
+                                };
+                                if (count == 0) {
+                                    results.innerHTML = '<p>No results found</p>';
+                                }
+                            }
+                        }
+                        else {
+                            results.innerHTML = '<p>No results found</p>';
+                        }
+                    })
+                    .catch(error => console.error(error));
+                }
+            });
+        </script>
+    </body>
+</html>
